@@ -1,0 +1,34 @@
+<html>
+<head> </head>
+<body>
+<h1><center><b>WELCOME TO HOME PAGE</b></center></h1>
+{% block content %}
+<script>
+function fileValidation(){
+    var fileInput = document.getElementById('file');
+    var filePath = fileInput.value;
+    var allowedExtensions = /(\.docx)$/i;
+    if(!allowedExtensions.exec(filePath)){
+        alert('Please upload file having extensions .docx only.');
+        fileInput.value = '';
+        return false;
+}
+}
+
+</script>
+<center>
+    <p>Click on the "Choose file"
+    button to upload a file:</p>
+    <form method="POST"
+    enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" id="myfile"
+    name="document">
+    <button
+
+    type="submit">Upload</button>
+</form>
+</center>
+{% endblock %}
+</body>
+</html>
